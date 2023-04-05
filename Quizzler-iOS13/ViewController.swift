@@ -20,13 +20,13 @@ class ViewController: UIViewController {
     // MARK: - Class Variables
     
     let quizz = [
-    "Sharks are mammals.",
-    "Sea otters have a favorite rock they use to break open food.",
-    "The blue whale is the biggest animal to have ever lived.",
-    "The hummingbird egg is the world's smallest bird egg.",
-    "Bats are blind.",
-    "An octopus has seven hearts.",
-    "Herbivores are animal eaters."
+    ["Sharks are mammals.", "False"],
+    ["Sea otters have a favorite rock they use to break open food.", "True"],
+    ["The blue whale is the biggest animal to have ever lived.", "True"],
+    ["The hummingbird egg is the world's smallest bird egg.", "True"],
+    ["Bats are blind.", "False"],
+    ["An octopus has seven hearts.", "False"],
+    ["Herbivores are animal eaters.", "False"]
     ]
     var questionNumber = 0
     
@@ -38,16 +38,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        questionNumber += 1
+        
+        let userAnswer = sender.currentTitle
+        let actualAnswer = quizz[questionNumber][1]
+        
+        if userAnswer == actualAnswer {
+            print("Correct")
+        }
+        else {
+            print("Wrong")
+        }
+        
+        nextQuestion()
         setupQuestions()
     }
     
     func setupQuestions() {
-        if questionNumber <= quizz.count-1 {
-            questionLabel.text = quizz[questionNumber]
+            questionLabel.text = quizz[questionNumber][0]
+    }
+    
+    func nextQuestion() {
+        if questionNumber < quizz.count-1 {
+            questionNumber += 1
         }
         else {
-            questionLabel.text = quizz.last
+            questionNumber = 0
         }
     }
 }
