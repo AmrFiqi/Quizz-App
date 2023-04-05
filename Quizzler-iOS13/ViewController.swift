@@ -20,13 +20,13 @@ class ViewController: UIViewController {
     // MARK: - Class Variables
     
     let quizz = [
-    ["Sharks are mammals.", "False"],
-    ["Sea otters have a favorite rock they use to break open food.", "True"],
-    ["The blue whale is the biggest animal to have ever lived.", "True"],
-    ["The hummingbird egg is the world's smallest bird egg.", "True"],
-    ["Bats are blind.", "False"],
-    ["An octopus has seven hearts.", "False"],
-    ["Herbivores are animal eaters.", "False"]
+    Questions(text: "Sharks are mammals.", answer: "False"),
+    Questions(text: "Sea otters have a favorite rock they use to break open food.", answer: "True"),
+    Questions(text: "The blue whale is the biggest animal to have ever lived.", answer: "True"),
+    Questions(text: "The hummingbird egg is the world's smallest bird egg.", answer: "True"),
+    Questions(text: "Bats are blind.", answer: "False"),
+    Questions(text: "An octopus has seven hearts.", answer: "False"),
+    Questions(text: "Herbivores are animal eaters.", answer: "False"),
     ]
     var questionNumber = 0
     
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
         let userAnswer = sender.currentTitle
-        let actualAnswer = quizz[questionNumber][1]
+        let actualAnswer = quizz[questionNumber].answer
         
         if userAnswer == actualAnswer {
             print("Correct")
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     }
     
     func setupQuestions() {
-            questionLabel.text = quizz[questionNumber][0]
+        questionLabel.text = quizz[questionNumber].text
     }
     
     func nextQuestion() {
