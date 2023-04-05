@@ -20,13 +20,19 @@ class ViewController: UIViewController {
     // MARK: - Class Variables
     
     let quizz = [
-    Questions(text: "Sharks are mammals.", answer: "False"),
-    Questions(text: "Sea otters have a favorite rock they use to break open food.", answer: "True"),
-    Questions(text: "The blue whale is the biggest animal to have ever lived.", answer: "True"),
-    Questions(text: "The hummingbird egg is the world's smallest bird egg.", answer: "True"),
-    Questions(text: "Bats are blind.", answer: "False"),
-    Questions(text: "An octopus has seven hearts.", answer: "False"),
-    Questions(text: "Herbivores are animal eaters.", answer: "False"),
+        Questions(q: "A slug's blood is green.", a: "True"),
+        Questions(q: "Approximately one quarter of human bones are in the feet.", a: "True"),
+        Questions(q: "The total surface area of two human lungs is approximately 70 square metres.", a: "True"),
+        Questions(q: "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", a: "True"),
+        Questions(q: "In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.", a:"False"),
+        Questions(q: "It is illegal to pee in the Ocean in Portugal.", a: "True"),
+        Questions(q: "You can lead a cow down stairs but not up stairs.", a: "False"),
+        Questions(q: "Google was originally called 'Backrub'.", a: "True"),
+        Questions(q: "Buzz Aldrin's mother's maiden name was 'Moon'.", a: "True"),
+        Questions(q: "The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.", a: "False"),
+        Questions(q: "No piece of square dry paper can be folded in half more than 7 times.", a: "False"),
+        Questions(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
+
     ]
     var questionNumber = 0
     
@@ -34,7 +40,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupQuestions()
+        updateUI()
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -43,17 +49,23 @@ class ViewController: UIViewController {
         let actualAnswer = quizz[questionNumber].answer
         
         if userAnswer == actualAnswer {
-            print("Correct")
+            sender.backgroundColor = .green
         }
         else {
-            print("Wrong")
+            sender.backgroundColor = .red
+        }
+        let seconds = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) { [self] in
+            // Put your code which should be executed with a delay here
+            self.nextQuestion()
+            self.updateUI()
         }
         
-        nextQuestion()
-        setupQuestions()
     }
     
-    func setupQuestions() {
+    func updateUI() {
+        trueButton.backgroundColor = .clear
+        falseButton.backgroundColor = .clear
         questionLabel.text = quizz[questionNumber].text
     }
     
