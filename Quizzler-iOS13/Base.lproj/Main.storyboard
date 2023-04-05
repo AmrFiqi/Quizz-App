@@ -86,7 +86,7 @@
                     </view>
                     <connections>
                         <outlet property="falseButton" destination="tbn-vQ-GyC" id="nKD-cY-P3l"/>
-                        <outlet property="progressBar" destination="eGL-jB-Wwb" id="FoS-rC-U43"/>
+                        <outlet property="progressBar" destination="TXm-qh-7Xg" id="FDd-u5-nKF"/>
                         <outlet property="questionLabel" destination="rSI-li-mhO" id="mwW-cx-S2r"/>
                         <outlet property="trueButton" destination="oVw-Hl-IRe" id="nFf-iA-JYu"/>
                     </connections>

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var trueButton: UIButton!
     @IBOutlet var questionLabel: UILabel!
-    @IBOutlet var progressBar: UIImageView!
+    @IBOutlet var progressBar: UIProgressView!
     @IBOutlet var falseButton: UIButton!
     
     // MARK: - Class Variables
@@ -63,6 +63,7 @@ class ViewController: UIViewController {
         trueButton.backgroundColor = .clear
         falseButton.backgroundColor = .clear
         questionLabel.text = quizz[questionNumber].text
+        progressBar.progress = Float(questionNumber + 1) / Float(quizz.count)
     }
     
     func nextQuestion() {
