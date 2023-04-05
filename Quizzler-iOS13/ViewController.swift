@@ -54,12 +54,8 @@ class ViewController: UIViewController {
         else {
             sender.backgroundColor = .red
         }
-        let seconds = 0.5
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) { [self] in
-            // Put your code which should be executed with a delay here
-            self.nextQuestion()
-            self.updateUI()
-        }
+        
+        updateQuestions()
         
     }
     
@@ -75,6 +71,15 @@ class ViewController: UIViewController {
         }
         else {
             questionNumber = 0
+        }
+    }
+    
+    func updateQuestions() {
+        let seconds = 0.2
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) { [self] in
+            // Put your code which should be executed with a delay here
+            self.nextQuestion()
+            self.updateUI()
         }
     }
 }
